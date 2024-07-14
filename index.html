@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Malaysia Air Quality Index</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <h1>Air Quality Insights for Southeast Asia</h1>
+        <a href="more_information.html" class="more-info-button">More Information</a>
+    </div>
+    
+    <!-- Welcome message -->
+    <div class="welcome-message">
+        <h2>Welcome to the Malaysia Air Quality Index Platform</h2>
+        <p>Stay informed about the air quality in Southeast Asia and take steps to protect your health and the environment.</p>
+    </div>
+
+    <div id="map-container">
+        <h2>Air quality Map</h2>
+        <label for="year-select">Select Year:</label>
+        <select id="year-select"></select>
+        <button id="apply-map" onclick="applyMap()" title="Click to apply the selected year and update the map">Apply</button>
+        <button id="more-button" onclick="toggleMoreSection()">More</button>
+        <div id="map">
+            <div id="legend">
+                <h3>Legend</h3>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: rgba(0, 128, 0, 0.8)"></span>
+                    <span class="legend-label">Optimum (0-50)</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: rgba(255, 255, 0, 0.8)"></span>
+                    <span class="legend-label">Moderate (51-100)</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: rgba(255, 165, 0, 0.8)"></span>
+                    <span class="legend-label">Bad (101-150)</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: rgba(255, 0, 0, 0.8)"></span>
+                    <span class="legend-label">Dangerous (151-200)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <section id="more-section" style="display: none;">
+        <div class="container">
+            <div id="chart-container">
+                <h2>Chart</h2>
+                <label for="year-select-chart">Select Year:</label>
+                <select id="year-select-chart"></select>
+                <button id="apply-chart">Apply</button>
+                <div>
+                    <input type="radio" id="bar-chart" name="chart-type" value="bar" checked>
+                    <label for="bar-chart">Bar Chart</label>
+                    <input type="radio" id="line-chart" name="chart-type" value="line">
+                    <label for="line-chart">Line Chart</label>
+                </div>
+                <div id="chart"></div>
+            </div>
+        </div>
+    </section>
+
+    <div id="detailed-visualizations">
+        <div id="additional-charts">
+            <!-- Placeholder for additional charts -->
+        </div>
+    </div>
+
+    <div id="loading-spinner" style="display: none;">
+        <img src="spinner.gif" alt="Loading..." />
+    </div>
+
+    <footer>
+        © 2024 Air Quality Insights. All rights reserved. by Yousef Ibrahim
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="main.js"></script>
+    <script>
+        function toggleMoreSection() {
+            const moreSection = document.getElementById('more-section');
+            const moreButton = document.getElementById('more-button');
+            if (moreSection.style.display === 'none') {
+                moreSection.style.display = 'block';
+                moreButton.textContent = 'Less';
+            } else {
+                moreSection.style.display = 'none';
+                moreButton.textContent = 'More';
+            }
+        }
+    </script>
+</body>
+</html>
